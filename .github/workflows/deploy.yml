@@ -46,6 +46,13 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           sed -i "s|image:.*|image: $REGISTRY/${{ env.REPOSITORY_NAME }}:$IMAGE_TAG|g" manifest/2_pod.yaml
+          
+      - name: Commit and push manifest changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest/2_pod.yaml
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Update frontend image to ${{ github.sha }}" && git push)
       
       # - name: Fill in the new image ID in the Amazon ECS task definition
       #   id: task-def
