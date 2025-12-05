@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: aws-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: arn:aws:ecr:ap-northeast-2:286387522454:repository/demoproject/frontend:TAG
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: frontendconfigmap
