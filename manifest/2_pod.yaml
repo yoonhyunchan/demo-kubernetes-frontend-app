@@ -15,9 +15,6 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: arn:aws:ecr:ap-northeast-2:286387522454:repository/demoproject/frontend:TAG
+        image: 286387522454.dkr.ecr.ap-northeast-2.amazonaws.com/demoproject/frontend:95d783ca7eeb4598a7027c02567ce45645f8dd9e 
         ports:
         - containerPort: 80
-        envFrom:
-        - configMapRef:
-            name: frontendconfigmap

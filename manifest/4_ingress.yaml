@@ -15,7 +15,8 @@ metadata:
 spec:
   ingressClassName: alb  # [중요] 인그레스 클래스 지정
   rules:
-    - http:
+    - host: www.yooniquespace.cloud  
+      http:
         paths:
           - path: /
             pathType: Prefix

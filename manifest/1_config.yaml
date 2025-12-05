@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: frontendconfigmap
-  namespace: aws-test
-data:
-  VITE_API_URL: https://www.yooniquespace.cloud
